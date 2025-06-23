@@ -104,8 +104,7 @@ input[type="text"] {
 
 #result, #errorResult {
     min-height: 24px;
-    height: auto;                /* 允许高度自适应内容 */
-    max-height: none;            /* 不限制最大高度 */
+    height: 24px;                 /* 固定高度，单行显示 */
     margin-top: 10px;
     padding: 6px 8px;
     text-align: center;
@@ -115,10 +114,9 @@ input[type="text"] {
     color: #2d3a4b;
     transition: background 0.2s, color 0.2s;
     box-sizing: border-box;
-    overflow-wrap: break-word;   /* 自动换行 */
-    word-break: break-all;       /* 长单词也换行 */
-    white-space: pre-line;       /* 保留换行符 */
-    overflow: visible;           /* 允许内容溢出显示 */
+    overflow: hidden;
+    text-overflow: ellipsis;      /* 超出部分显示省略号 */
+    white-space: nowrap;          /* 强制单行 */
 }
 
 button:active {
