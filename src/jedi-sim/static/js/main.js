@@ -1,7 +1,7 @@
 // This file contains the JavaScript code that handles the functionality of the buttons.
 
 document.addEventListener('DOMContentLoaded', function () {
-    // 错误码上报表单处理
+    // Error code report form handling
     const form = document.getElementById('reportForm');
     const resultDiv = document.getElementById('errorResult');
 
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
-    // 添加错误码表单处理
+    // Add error code form handling
     const addErrorCodeForm = document.getElementById('addErrorCodeForm');
     const addErrorCodeResultDiv = document.getElementById('result');
     
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         addErrorCodeForm.addEventListener('submit', function (e) {
             e.preventDefault();
             
-            // 收集所有输入框的值
+            // Collect all input values
             const errorCodeData = {
                 z0: parseInt(document.getElementById('z0').value) || 0,
                 z1: parseInt(document.getElementById('z1').value) || 0,

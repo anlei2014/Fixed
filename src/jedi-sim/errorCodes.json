@@ -49,6 +49,16 @@
     "Z6Z7_ErrorData": 3,
     "Description": "3"
   },
+  "4": {
+    "Z0": 4,
+    "Z1": 4,
+    "Z2": 4,
+    "Z3_Phase": 4,
+    "Z3_Class": 4,
+    "Z4Z5_ErrorCode": 4,
+    "Z6Z7_ErrorData": 4,
+    "Description": "4"
+  },
   "804": {
     "Z0": 6,
     "Z1": 30,

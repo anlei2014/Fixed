@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>errorCodes.json 字段说明</title>
+    <title>errorCodes.json Field Description</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; }
@@ -14,18 +14,18 @@
     </style>
 </head>
 <body>
-    <h1>errorCodes.json 字段说明</h1>
+    <h1>errorCodes.json Field Description</h1>
     <table class="field-table">
-        <tr><th>字段名</th><th>类型</th><th>说明</th></tr>
-        <tr><td>Z0</td><td>int</td><td>发生错误时的发生器状态（如 0x06 表示错误状态）</td></tr>
-        <tr><td>Z1</td><td>int</td><td>简化错误码（如 30、90 等）</td></tr>
-        <tr><td>Z2</td><td>int</td><td>显示位图（bit 0-7，通常为 0 表示全部正常）</td></tr>
-        <tr><td>Z3_Phase</td><td>int</td><td>错误发生时的阶段（高 4 位）</td></tr>
-        <tr><td>Z3_Class</td><td>int</td><td>错误类别（低 4 位）</td></tr>
-        <tr><td>Z4Z5_ErrorCode</td><td>int</td><td>发生器错误码（小端格式，例：804、134）</td></tr>
-        <tr><td>Z6Z7_ErrorData</td><td>int</td><td>与错误相关的数据（如温度等，例：5）</td></tr>
-        <tr><td>Description</td><td>string</td><td>错误描述信息</td></tr>
+        <tr><th>Field Name</th><th>Type</th><th>Description</th></tr>
+        <tr><td>Z0</td><td>int</td><td>Generator state when error occurs (e.g., 0x06 indicates error state)</td></tr>
+        <tr><td>Z1</td><td>int</td><td>Simplified error code (e.g., 30, 90, etc.)</td></tr>
+        <tr><td>Z2</td><td>int</td><td>Display bitmap (bit 0-7, usually 0 indicates all normal)</td></tr>
+        <tr><td>Z3_Phase</td><td>int</td><td>Phase when error occurs (high 4 bits)</td></tr>
+        <tr><td>Z3_Class</td><td>int</td><td>Error category (low 4 bits)</td></tr>
+        <tr><td>Z4Z5_ErrorCode</td><td>int</td><td>Generator error code (little-endian format, e.g., 804, 134)</td></tr>
+        <tr><td>Z6Z7_ErrorData</td><td>int</td><td>Data related to error (e.g., temperature, etc., e.g., 5)</td></tr>
+        <tr><td>Description</td><td>string</td><td>Error description information</td></tr>
     </table>
-    <button class="back-btn" onclick="window.location.href='index.html'">返回</button>
+    <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
 </body>
 </html>
