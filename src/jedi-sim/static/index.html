@@ -8,25 +8,65 @@
 </head>
 <body>
     <div class="container">
-        <div class="reporter-card error-reporter">
-            <h1>Error Code Reporter</h1>
-            <form id="reportForm">
-                <input type="text" id="errorcode" name="errorcode" placeholder="Enter error code">
-                <div class="button-group">
-                    <button type="submit" class="report">Report</button>
-                    <button type="button" id="errorClearButton" class="clear">Clear</button>
-                </div>
-            </form>
-            <div id="errorResult"></div>
-        </div>
-        <div class="reporter-card hotmelt-reporter">
-            <h1>Hotmelt Reporter</h1>
-            <input type="text" id="hotmeltCode" placeholder="Enter hotmelt code">
-            <div class="button-group">
-                <button id="hotmeltReportButton" class="report">Report</button>
-                <button id="hotmeltClearButton" class="clear">Clear</button>
+        <div class="combined-area">
+            <div class="tab-area">
+                <a href="instruction.html" class="instruction-tab">Instruction <span class="help-text">Need help? Click me</span></a>
             </div>
-            <div id="result"></div>
+            <div class="reporters-container">
+                <div class="reporter-card add-error-code-reporter">
+                    <h1>Add Error Code</h1>
+                    <form id="addErrorCodeForm">
+                        <div class="input-group">
+                            <label for="z0">Z0:</label>
+                            <input type="number" id="z0" name="z0" placeholder="Enter Z0 value">
+                        </div>
+                        <div class="input-group">
+                            <label for="z1">Z1:</label>
+                            <input type="number" id="z1" name="z1" placeholder="Enter Z1 value">
+                        </div>
+                        <div class="input-group">
+                            <label for="z2">Z2:</label>
+                            <input type="number" id="z2" name="z2" placeholder="Enter Z2 value">
+                        </div>
+                        <div class="input-group">
+                            <label for="z3_phase">Z3_Phase:</label>
+                            <input type="number" id="z3_phase" name="z3_phase" placeholder="Enter Z3_Phase value">
+                        </div>
+                        <div class="input-group">
+                            <label for="z3_class">Z3_Class:</label>
+                            <input type="number" id="z3_class" name="z3_class" placeholder="Enter Z3_Class value">
+                        </div>
+                        <div class="input-group">
+                            <label for="z4z5_errorcode">Z4Z5_ErrorCode:</label>
+                            <input type="number" id="z4z5_errorcode" name="z4z5_errorcode" placeholder="Enter Z4Z5_ErrorCode value">
+                        </div>
+                        <div class="input-group">
+                            <label for="z6z7_errordata">Z6Z7_ErrorData:</label>
+                            <input type="number" id="z6z7_errordata" name="z6z7_errordata" placeholder="Enter Z6Z7_ErrorData value">
+                        </div>
+                        <div class="input-group">
+                            <label for="description">Description:</label>
+                            <input type="text" id="description" name="description" placeholder="Enter description">
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="report">Add</button>
+                            <button type="button" id="addErrorCodeClearButton" class="clear">Clear</button>
+                        </div>
+                    </form>
+                    <div id="result"></div>
+                </div>
+                <div class="reporter-card error-reporter">
+                    <h1>Error Code Reporter</h1>
+                    <form id="reportForm">
+                        <input type="text" id="errorcode" name="errorcode" placeholder="Enter error code">
+                        <div class="button-group">
+                            <button type="submit" class="report">Report</button>
+                            <button type="button" id="errorClearButton" class="clear">Clear</button>
+                        </div>
+                    </form>
+                    <div id="errorResult"></div>
+                </div>
+            </div>
         </div>
         <!-- 以后扩展直接复制下面结构 -->
         <!--
@@ -43,6 +83,18 @@
         document.getElementById('errorClearButton').onclick = function() {
             document.getElementById('errorcode').value = '';
             document.getElementById('errorResult').textContent = '';
+        };
+        
+        document.getElementById('addErrorCodeClearButton').onclick = function() {
+            document.getElementById('z0').value = '';
+            document.getElementById('z1').value = '';
+            document.getElementById('z2').value = '';
+            document.getElementById('z3_phase').value = '';
+            document.getElementById('z3_class').value = '';
+            document.getElementById('z4z5_errorcode').value = '';
+            document.getElementById('z6z7_errordata').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('result').textContent = '';
         };
     </script>
 </body>

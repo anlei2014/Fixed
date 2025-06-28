@@ -1,0 +1,62 @@
+{
+  "1": {
+    "Z0": 1,
+    "Z1": 1,
+    "Z2": 1,
+    "Z3_Phase": 1,
+    "Z3_Class": 1,
+    "Z4Z5_ErrorCode": 1,
+    "Z6Z7_ErrorData": 1,
+    "Description": "1"
+  },
+  "110": {
+    "Z0": 6,
+    "Z1": 90,
+    "Z2": 0,
+    "Z3_Phase": 2,
+    "Z3_Class": 5,
+    "Z4Z5_ErrorCode": 134,
+    "Z6Z7_ErrorData": 5,
+    "Description": "This error is usually caused by a HW issue."
+  },
+  "134": {
+    "Z0": 6,
+    "Z1": 90,
+    "Z2": 0,
+    "Z3_Phase": 2,
+    "Z3_Class": 5,
+    "Z4Z5_ErrorCode": 134,
+    "Z6Z7_ErrorData": 5,
+    "Description": "This error is usually caused by a HW issue."
+  },
+  "2": {
+    "Z0": 2,
+    "Z1": 2,
+    "Z2": 2,
+    "Z3_Phase": 2,
+    "Z3_Class": 2,
+    "Z4Z5_ErrorCode": 2,
+    "Z6Z7_ErrorData": 2,
+    "Description": "2"
+  },
+  "3": {
+    "Z0": 3,
+    "Z1": 3,
+    "Z2": 3,
+    "Z3_Phase": 3,
+    "Z3_Class": 3,
+    "Z4Z5_ErrorCode": 3,
+    "Z6Z7_ErrorData": 3,
+    "Description": "3"
+  },
+  "804": {
+    "Z0": 6,
+    "Z1": 30,
+    "Z2": 0,
+    "Z3_Phase": 2,
+    "Z3_Class": 2,
+    "Z4Z5_ErrorCode": 804,
+    "Z6Z7_ErrorData": 5,
+    "Description": "Tube spit (all kV drop/regul errors)"
+  }
+}

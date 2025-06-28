@@ -111,17 +111,6 @@ func startHTTPServer(wg *sync.WaitGroup) {
 		log.Fatalf("Failed to load error codes: %v", err)
 	}
 
-	// 提供静态资源（注意路径配置）
-	// pwd, err := os.Getwd()
-	// if err != nil {
-	// 	log.Fatal("无法获取当前目录:", err)
-	// }
-
-	// baseDir := fmt.Sprintf("%s/simulator/jedi", pwd)
-
-	// log.Println("当前基础目录:", baseDir)
-	// log.Println("静态资源目录:", fmt.Sprintf("%s/static", baseDir))
-
 	// 获取当前工作目录
 	pwd, err := os.Getwd()
 	if err != nil {
@@ -133,6 +122,8 @@ func startHTTPServer(wg *sync.WaitGroup) {
 
 	// API 路由
 	http.HandleFunc("/api/report", handler.ReportHandler)
+	// 添加新的API路由
+	http.HandleFunc("/api/add-error-code", handler.AddErrorCodeHandler)
 
 	// 根路径重定向到 index.html
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

@@ -7,7 +7,7 @@ var (
 	}
 	msgId = map[string]int{
 		"GET_JEDI_STATUS":    520,
-		"NOTIFY_JEDI_STATUS": 521,
+		"NOTIFY_JEDI_STATUS": 520,
 	}
 	msgLn = map[string]int{
 		"GET_JEDI_STATUS":    16, // Length of the GET_JEDI_STATUS

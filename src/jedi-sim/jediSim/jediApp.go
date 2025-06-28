@@ -39,8 +39,8 @@ func GeneratorStatusErrorCode(msg [MSG_LENGTH]int, errorCode int) (bool, [MSG_LE
 		return false, [MSG_LENGTH]int{}
 	}
 
-	// Look up error code information
-	errInfo, ok := model.ErrorMap[errorCode]
+	// Look up error code information from JSON
+	errInfo, ok := model.LoadErrorInfoFromJSON(errorCode, "src/jedi-sim/errorCodes.json")
 	if !ok {
 		fmt.Printf("[ERROR] Unknown error code: %d\n", errorCode)
 		return false, [MSG_LENGTH]int{}

@@ -1,3 +1,5 @@
+@import url('instruction-btn.css');
+
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(120deg, #f4f6fa 0%, #e9edf3 100%);
@@ -7,22 +9,73 @@ body {
 
 .container {
     display: flex;
-    gap: 40px;
     justify-content: center;
     align-items: flex-start;
     /* 允许容器宽度自适应 */
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
+    flex-wrap: wrap; /* 在小屏幕上允许换行 */
+}
+
+/* 新增的组合区域样式 */
+.combined-area {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    padding: 0;
+    width: 900px;
+    max-width: 95%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e0e7ff;
+}
+
+/* 页签区域样式 */
+.tab-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+/* Instruction页签按钮样式 */
+.instruction-tab {
+    display: inline-block;
+    background: #4f8cff;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 0 0 8px 0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.instruction-tab:hover {
+    background: #2563eb;
+    transform: translateY(2px);
+}
+
+/* 报告卡片容器 */
+.reporters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 30px 30px;
+    background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
 }
 
 .reporter-card {
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-    padding: 32px 36px 12px 36px;  /* 左右padding加大 */
-    width: 440px;                  /* 原340px，改为440px，拉伸宽度 */
-    min-width: 340px;
+    padding: 25px 30px 12px 30px; /* 减小内边距使卡片更紧凑 */
+    width: 400px; /* 稍微减小宽度以适应新容器 */
+    min-width: 320px;
     max-width: 100%;
     min-height: 0;
     display: flex;
@@ -30,17 +83,36 @@ body {
     align-items: stretch;
     transition: box-shadow 0.2s;
     box-sizing: border-box;
+    border: 1px solid #e6edf8; /* 统一边框样式 */
 }
+
 .reporter-card:hover {
     box-shadow: 0 8px 28px rgba(60, 80, 120, 0.13), 0 2px 8px rgba(0,0,0,0.06);
     border-color: #b5c6e0;
+}
+
+/* 统一两个卡片的样式 */
+.add-error-code-reporter, .error-reporter {
+    background: linear-gradient(to bottom, #ffffff, #f9fbff);
 }
 
 .reporter-card h1 {
     font-size: 1.3rem;
     margin-bottom: 18px;
     text-align: center;
-    color: #2d3a4b;
+    color: #4f8cff; /* 统一标题颜色 */
+    position: relative;
+}
+
+/* 为两个标题都添加下划线装饰 */
+.reporter-card h1:after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #4f8cff;
+    margin: 8px auto 0;
+    border-radius: 2px;
 }
 
 .button-group {
@@ -102,6 +174,25 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
+/* 美化number类型输入框，去掉加减按钮 */
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    -moz-appearance: textfield; /* Firefox */
+}
+
+/* 去掉Chrome, Safari, Edge, Opera的加减按钮 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 #result, #errorResult {
     min-height: 24px;
     height: 24px;                 /* 固定高度，单行显示 */
@@ -121,4 +212,99 @@ input[type="text"] {
 
 button:active {
     transform: scale(0.97);
+}
+
+/* 优化输入组样式，使其更紧凑 */
+.input-group {
+    margin-bottom: 10px; /* 减小底部间距 */
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.input-group:hover {
+    transform: translateX(2px);
+}
+
+.input-group label {
+    width: 130px; /* 减小标签宽度 */
+    font-size: 0.9rem; /* 减小字体大小 */
+    color: #4b5563;
+    font-weight: 500;
+    padding-right: 8px; /* 减小右侧内边距 */
+}
+
+.input-group input {
+    flex: 1;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    padding: 8px; /* 减小输入框内边距 */
+    font-size: 0.95rem; /* 稍微减小字体大小 */
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #4f8cff;
+    box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.1);
+}
+
+#addErrorCodeForm {
+    width: 100%;
+}
+
+/* 为Error Code Reporter的输入框添加与Add Error Code一致的样式 */
+#reportForm input {
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#reportForm input:focus {
+    outline: none;
+    border-color: #4f8cff;
+    box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.1);
+}
+
+/* 响应式调整 */
+@media (max-width: 900px) {
+    .reporters-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .reporter-card {
+        width: 90%;
+    }
+}
+
+/* 在适当位置添加以下样式 */
+
+/* 帮助文本样式 */
+.help-text {
+    font-size: 0.75rem;
+    font-weight: normal;
+    opacity: 0.9;
+    margin-left: 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    padding-left: 6px;
+}
+
+.instruction-tab:hover .help-text {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* 调整instruction-tab的宽度以适应帮助文本 */
+.instruction-tab {
+    display: inline-block;
+    background: #4f8cff;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 0 0 8px 0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap; /* 防止文本换行 */
 }

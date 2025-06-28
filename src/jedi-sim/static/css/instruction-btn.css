@@ -1,0 +1,15 @@
+button.instruction-btn {
+    background: #ff9800;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+button.instruction-btn:hover {
+    background: #e65100;
+}
