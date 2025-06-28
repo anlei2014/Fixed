@@ -1,6 +1,6 @@
 package main
 
-import(
+import (
 	"fmt"
 	// "jedi-sim/jediSim"
 	// "jedi-sim/msgHandler"
@@ -9,10 +9,10 @@ import(
 	"net/http"
 	"os"
 	"sync"
+
 	// "time"
 
 	"jedi-sim/internal/handler"
-	"jedi-sim/internal/model"
 )
 
 var state int
@@ -106,11 +106,6 @@ func main() {
 func startHTTPServer(wg *sync.WaitGroup) {
 	defer wg.Done()
 
-	// 加载错误码
-	if err := model.LoadErrorCodes(); err != nil {
-		log.Fatalf("Failed to load error codes: %v", err)
-	}
-
 	// 获取当前工作目录
 	pwd, err := os.Getwd()
 	if err != nil {
@@ -136,6 +131,7 @@ func startHTTPServer(wg *sync.WaitGroup) {
 		log.Fatalf("HTTP server failed: %v", err)
 	}
 }
+
 // func sendInitMessage(flag chan int) {
 // 	<-flag
 // 	var writeHandler = jediSim.GetWriteCanMSGHandler()
