@@ -1,0 +1,241 @@
+/* Instruction Page Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #2d3748;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header {
+    background: linear-gradient(135deg, #4f8cff 0%, #2563eb 100%);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+}
+
+.content {
+    padding: 40px 30px;
+}
+
+.field-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 30px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.field-table th {
+    background: linear-gradient(135deg, #f8faff 0%, #e9edf3 100%);
+    color: #2d3748;
+    font-weight: 600;
+    padding: 18px 20px;
+    text-align: left;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.field-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background-color 0.2s ease;
+}
+
+.field-table tr:hover td {
+    background-color: #f8faff;
+}
+
+.field-table tr:last-child td {
+    border-bottom: none;
+}
+
+.field-name {
+    font-weight: 600;
+    color: #4f8cff;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+.field-type {
+    font-weight: 500;
+    color: #059669;
+    background: #ecfdf5;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+.field-description {
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #4f8cff 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 140, 255, 0.3);
+    text-decoration: none;
+    margin: 20px auto;
+    display: block;
+    width: fit-content;
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 140, 255, 0.4);
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.back-btn:active {
+    transform: translateY(0);
+}
+
+.back-btn::before {
+    content: '←';
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+    
+    .header {
+        padding: 30px 20px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .content {
+        padding: 30px 20px;
+    }
+    
+    .field-table {
+        font-size: 0.9rem;
+    }
+    
+    .field-table th,
+    .field-table td {
+        padding: 12px 15px;
+    }
+    
+    .field-table th {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .field-table {
+        font-size: 0.85rem;
+    }
+    
+    .field-table th,
+    .field-table td {
+        padding: 10px 12px;
+    }
+    
+    .back-btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Animation for table rows */
+.field-table tr {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.field-table tr:nth-child(1) { animation-delay: 0.1s; }
+.field-table tr:nth-child(2) { animation-delay: 0.2s; }
+.field-table tr:nth-child(3) { animation-delay: 0.3s; }
+.field-table tr:nth-child(4) { animation-delay: 0.4s; }
+.field-table tr:nth-child(5) { animation-delay: 0.5s; }
+.field-table tr:nth-child(6) { animation-delay: 0.6s; }
+.field-table tr:nth-child(7) { animation-delay: 0.7s; }
+.field-table tr:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 

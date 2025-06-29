@@ -2,30 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>errorCodes.json Field Description</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .field-table { border-collapse: collapse; width: 100%; max-width: 700px; margin: 0 auto; }
-        .field-table th, .field-table td { border: 1px solid #ccc; padding: 8px 12px; }
-        .field-table th { background: #f5f5f5; }
-        h1 { text-align: center; }
-        .back-btn { margin: 20px auto; display: block; }
-    </style>
+    <link rel="stylesheet" href="css/instruction.css">
 </head>
 <body>
-    <h1>errorCodes.json Field Description</h1>
-    <table class="field-table">
-        <tr><th>Field Name</th><th>Type</th><th>Description</th></tr>
-        <tr><td>Z0</td><td>int</td><td>Generator state when error occurs (e.g., 0x06 indicates error state)</td></tr>
-        <tr><td>Z1</td><td>int</td><td>Simplified error code (e.g., 30, 90, etc.)</td></tr>
-        <tr><td>Z2</td><td>int</td><td>Display bitmap (bit 0-7, usually 0 indicates all normal)</td></tr>
-        <tr><td>Z3_Phase</td><td>int</td><td>Phase when error occurs (high 4 bits)</td></tr>
-        <tr><td>Z3_Class</td><td>int</td><td>Error category (low 4 bits)</td></tr>
-        <tr><td>Z4Z5_ErrorCode</td><td>int</td><td>Generator error code (little-endian format, e.g., 804, 134)</td></tr>
-        <tr><td>Z6Z7_ErrorData</td><td>int</td><td>Data related to error (e.g., temperature, etc., e.g., 5)</td></tr>
-        <tr><td>Description</td><td>string</td><td>Error description information</td></tr>
-    </table>
-    <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
+    <div class="container">
+        <div class="header">
+            <h1>errorCodes.json Field Description</h1>
+            <p>Complete guide to understanding error code structure and field definitions</p>
+        </div>
+        
+        <div class="content">
+            <table class="field-table">
+                <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="field-name">Z0</td>
+                        <td><span class="field-type">int</span></td>
+                        <td class="field-description">Generator state when error occurs (e.g., 0x06 indicates error state)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Z1</td>
+                        <td><span class="field-type">int</span></td>
+                        <td class="field-description">Simplified error code (e.g., 30, 90, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Z2</td>
+                        <td><span class="field-type">int</span></td>
+                        <td class="field-description">Display bitmap (bit 0-7, usually 0 indicates all normal)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Z3_Phase</td>
+                        <td><span class="field-type">int</span></td>
+                        <td class="field-description">Phase when error occurs (high 4 bits)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Z3_Class</td>
+                        <td><span class="field-type">int</span></td>
+                        <td class="field-description">Error category (low 4 bits)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Z4Z5_ErrorCode</td>
+                        <td><span class="field-type">int</span></td>
+                        <td class="field-description">Generator error code (little-endian format, e.g., 804, 134)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Z6Z7_ErrorData</td>
+                        <td><span class="field-type">int</span></td>
+                        <td class="field-description">Data related to error (e.g., temperature, etc., e.g., 5)</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Description</td>
+                        <td><span class="field-type">string</span></td>
+                        <td class="field-description">Error description information</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <button class="back-btn" onclick="window.location.href='index.html'" tabindex="0">
+                Back to Main Page
+            </button>
+        </div>
+    </div>
+    
+    <script src="js/instruction.js"></script>
 </body>
 </html>
