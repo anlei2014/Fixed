@@ -31,11 +31,16 @@ body {
     border: 1px solid #ccc; 
     padding: 8px 12px; 
     text-align: left;
+    vertical-align: top;
 }
 
 .field-table th { 
     background: #f5f5f5; 
     font-weight: bold;
+}
+
+.field-table td {
+    line-height: 1.4;
 }
 
 h1, h2, h3 { 
