@@ -1,5 +1,3 @@
-@import url('instruction-btn.css');
-
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(120deg, #f4f6fa 0%, #e9edf3 100%);
@@ -30,32 +28,6 @@ body {
     border: 1px solid #e0e7ff;
 }
 
-.tab-area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-}
-
-.instruction-tab {
-    display: inline-block;
-    background: #4f8cff;
-    color: #fff;
-    font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 0 0 8px 0;
-    text-decoration: none;
-    font-size: 0.9rem;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.instruction-tab:hover {
-    background: #2563eb;
-    transform: translateY(2px);
-}
-
 .reporters-container {
     display: flex;
     flex-wrap: wrap;
@@ -65,8 +37,14 @@ body {
     background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
 }
 
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .reporter-card {
-    background: #fff;
+    background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.07);
     padding: 25px 30px 12px 30px;
@@ -82,13 +60,13 @@ body {
     border: 1px solid #e6edf8;
 }
 
+.error-reporter, .hot-melt-reporter, .kvmas-reporter {
+    background: #ffffff;
+}
+
 .reporter-card:hover {
     box-shadow: 0 8px 28px rgba(60, 80, 120, 0.13), 0 2px 8px rgba(0,0,0,0.06);
     border-color: #b5c6e0;
-}
-
-.add-error-code-reporter, .error-reporter {
-    background: linear-gradient(to bottom, #ffffff, #f9fbff);
 }
 
 .reporter-card h1 {
@@ -189,7 +167,7 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
-#result, #errorResult {
+#result, #errorResult, #hotMeltResult, #kvmasResult {
     min-height: 24px;
     height: 24px;
     margin-top: 10px;
@@ -245,18 +223,23 @@ button:active {
     box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.1);
 }
 
-#addErrorCodeForm {
-    width: 100%;
-}
-
-#reportForm input {
+#reportForm input, #hotMeltForm input, #kvmasForm input {
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-#reportForm input:focus {
+#reportForm input:focus, #hotMeltForm input:focus, #kvmasForm input:focus {
     outline: none;
     border-color: #4f8cff;
     box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.1);
+}
+
+/* KVMAS form specific styling for better spacing */
+#kvmasForm input {
+    margin-bottom: 12px;
+}
+
+#kvmasForm input:last-of-type {
+    margin-bottom: 0;
 }
 
 @media (max-width: 900px) {
@@ -268,20 +251,8 @@ button:active {
     .reporter-card {
         width: 90%;
     }
-}
-
-.help-text {
-    font-size: 0.75rem;
-    font-weight: normal;
-    opacity: 0.9;
-    margin-left: 5px;
-    display: inline-block;
-    transition: all 0.3s ease;
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    padding-left: 6px;
-}
-
-.instruction-tab:hover .help-text {
-    opacity: 1;
-    transform: translateX(2px);
+    
+    .left-column, .right-column {
+        width: 100%;
+    }
 }
