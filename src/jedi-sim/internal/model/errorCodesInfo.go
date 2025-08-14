@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
@@ -22,28 +23,53 @@ type ErrorInfo struct {
 	Description    string // Description of the error
 }
 
+// getConfigPath returns the correct path to the errorCodes.json file
+func getConfigPath() string {
+	// Get current working directory
+	cwd, err := os.Getwd()
+	if err != nil {
+		log.Printf("[getConfigPath] Failed to get current working directory: %v", err)
+		return "config/errorCodes.json"
+	}
+
+	// Try multiple possible paths relative to current working directory
+	possiblePaths := []string{
+		filepath.Join(cwd, "config", "errorCodes.json"),
+		filepath.Join(cwd, "src", "jedi-sim", "config", "errorCodes.json"),
+		filepath.Join(cwd, "..", "config", "errorCodes.json"),
+		filepath.Join(cwd, "..", "..", "config", "errorCodes.json"),
+		"config/errorCodes.json",
+		"src/jedi-sim/config/errorCodes.json",
+	}
+
+	for _, path := range possiblePaths {
+		log.Printf("[getConfigPath] Trying path: %s", path)
+		if _, err := os.Stat(path); err == nil {
+			log.Printf("[getConfigPath] Found config file at: %s", path)
+			return path
+		}
+	}
+
+	log.Printf("[getConfigPath] No config file found, using default: config/errorCodes.json")
+	return "config/errorCodes.json"
+}
+
 // LoadErrorInfoFromJSON loads error info from errorCodes.json by code
 func LoadErrorInfoFromJSON(code int, path string) (ErrorInfo, bool) {
-	log.Printf("[LoadErrorInfoFromJSON] Loading error info for code: %d", code)
-	log.Printf("[LoadErrorInfoFromJSON] Attempting to read from path: %s", path)
+	// If path is empty, try to find the config file automatically
+	if path == "" {
+		path = getConfigPath()
+	}
+
+	log.Printf("[LoadErrorInfoFromJSON] Loading error info for code %d from path: %s", code, path)
 
 	// Try to open the specified file path
 	file, err := os.Open(path)
 	if err != nil {
-		log.Printf("[LoadErrorInfoFromJSON] Primary path failed: %v", err)
-		// Fallback to current directory errorCodes.json
-		fallbackPath := "errorCodes.json"
-		log.Printf("[LoadErrorInfoFromJSON] Trying fallback path: %s", fallbackPath)
-		file, err = os.Open(fallbackPath)
-		if err != nil {
-			log.Printf("[LoadErrorInfoFromJSON] Fallback path also failed: %v", err)
-			return ErrorInfo{}, false
-		}
-		path = fallbackPath
+		log.Printf("[LoadErrorInfoFromJSON] Failed to open file '%s': %v", path, err)
+		return ErrorInfo{}, false
 	}
 	defer file.Close()
-
-	log.Printf("[LoadErrorInfoFromJSON] Successfully opened file: %s", path)
 
 	// Read file content
 	data, err := ioutil.ReadAll(file)
@@ -52,7 +78,7 @@ func LoadErrorInfoFromJSON(code int, path string) (ErrorInfo, bool) {
 		return ErrorInfo{}, false
 	}
 
-	log.Printf("[LoadErrorInfoFromJSON] Read %d bytes from file", len(data))
+	log.Printf("[LoadErrorInfoFromJSON] Successfully read %d bytes from file", len(data))
 
 	// Parse JSON data
 	var errorMap map[string]ErrorInfo
@@ -64,35 +90,23 @@ func LoadErrorInfoFromJSON(code int, path string) (ErrorInfo, bool) {
 
 	// Convert code to string key and lookup
 	key := strconv.Itoa(code)
-	availableKeys := getMapKeys(errorMap)
-	log.Printf("[LoadErrorInfoFromJSON] Available error codes: %v", availableKeys)
 	log.Printf("[LoadErrorInfoFromJSON] Looking for key: '%s'", key)
+
+	// Log all available keys for debugging
+	availableKeys := make([]string, 0, len(errorMap))
+	for k := range errorMap {
+		availableKeys = append(availableKeys, k)
+	}
+	log.Printf("[LoadErrorInfoFromJSON] Available keys: %v", availableKeys)
 
 	info, ok := errorMap[key]
 	if ok {
-		log.Printf("[LoadErrorInfoFromJSON] Found error info for code %d:", code)
-		log.Printf("[LoadErrorInfoFromJSON]   - Z0 (Generator Status): %d", info.Z0)
-		log.Printf("[LoadErrorInfoFromJSON]   - Z1 (Simplified Error Code): %d", info.Z1)
-		log.Printf("[LoadErrorInfoFromJSON]   - Z2 (Display Bitmap): %d", info.Z2)
-		log.Printf("[LoadErrorInfoFromJSON]   - Z3_Phase: %d", info.Z3_Phase)
-		log.Printf("[LoadErrorInfoFromJSON]   - Z3_Class: %d", info.Z3_Class)
-		log.Printf("[LoadErrorInfoFromJSON]   - Z4Z5_ErrorCode: %d", info.Z4Z5_ErrorCode)
-		log.Printf("[LoadErrorInfoFromJSON]   - Z6Z7_ErrorData: %d", info.Z6Z7_ErrorData)
-		log.Printf("[LoadErrorInfoFromJSON]   - Description: '%s'", info.Description)
+		log.Printf("[LoadErrorInfoFromJSON] Found error info for code %d", code)
 	} else {
 		log.Printf("[LoadErrorInfoFromJSON] Error code %d not found in database", code)
 	}
 
 	return info, ok
-}
-
-// getMapKeys returns all keys from a map as a slice
-func getMapKeys(m map[string]ErrorInfo) []string {
-	keys := make([]string, 0, len(m))
-	for k := range m {
-		keys = append(keys, k)
-	}
-	return keys
 }
 
 // intToString converts integer to string (utility function)
